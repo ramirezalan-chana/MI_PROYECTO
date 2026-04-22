@@ -10,88 +10,46 @@
 </head>
 <body>
 
-  <!-- ═══════════════════════════════════
-       NAVBAR
-  ═══════════════════════════════════ -->
   <header class="navbar">
     <div class="navbar-inner">
 
-      <a href="#" class="logo">SPORTS<span>SHOES</span></a>
+      <a href="Menu.html" class="logo">SPORTS<span>SHOES</span></a>
 
       <div class="search-bar">
         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none"
-             stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
           <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
         </svg>
         <input type="text" name="busqueda-menu"
-               placeholder="Busca por modelo, marca o categoría..."
-               autocomplete="new-password" autocorrect="off"
-               autocapitalize="none" spellcheck="false"
-               readonly onfocus="this.removeAttribute('readonly')" />
+                placeholder="Busca por modelo, marca o categoría..."
+                autocomplete="off" />
       </div>
 
       <div class="nav-icons">
 
-        <!-- ── SLOT DE USUARIO ───────────────────────────────────────────
-             • Sin sesión  → #btnIrUsuario (<a>) es visible → navega a Usuario.html
-             • Con sesión  → Menu.js oculta el <a> y muestra #menuUserChip (avatar)
-        ─────────────────────────────────────────────────────────────── -->
         <div class="menu-user-slot" id="menuUserSlot">
-
-          <!-- Botón avatar (oculto por defecto; Menu.js lo muestra si hay sesión) -->
-          <button type="button" class="menu-user-chip hidden" id="menuUserChip"
-                  aria-label="Sesión de usuario" aria-expanded="false">
+          <button type="button" class="menu-user-chip hidden" id="menuUserChip">
             <div class="menu-user-avatar" id="menuUserAvatar">
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none"
-                   stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                 <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/>
                 <circle cx="12" cy="7" r="4"/>
               </svg>
             </div>
           </button>
-
-          <!-- Dropdown de usuario -->
-          <div class="menu-user-dropdown hidden" id="menuUserDropdown">
-            <div class="ud-header">
-              <div class="ud-avatar">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
-                     stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                  <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/>
-                  <circle cx="12" cy="7" r="4"/>
-                </svg>
-              </div>
-              <div class="ud-info">
-                <p class="ud-name"  id="menuUserDropdownName">Usuario</p>
-                <p class="ud-email" id="menuUserDropdownEmail">correo@ejemplo.com</p>
-              </div>
-            </div>
-            <div class="ud-divider"></div>
-            <button type="button" class="menu-user-logout" id="menuUserLogout">
-              <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="none"
-                   stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="flex-shrink:0">
-                <path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/>
-                <polyline points="16 17 21 12 16 7"/>
-                <line x1="21" y1="12" x2="9" y2="12"/>
-              </svg>
-              Cerrar sesión
-            </button>
-          </div>
-
         </div>
-        <!-- /SLOT DE USUARIO -->
 
         <button class="icon-btn" aria-label="Ubicación">
           <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none"
-               stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
             <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/>
             <circle cx="12" cy="10" r="3"/>
           </svg>
         </button>
 
-        <!-- Ícono de usuario (visible sin sesión → lleva a Usuario.html) -->
         <a href="Usuario.html" class="icon-btn" id="btnIrUsuario" aria-label="Usuario">
           <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none"
-               stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
             <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/>
             <circle cx="12" cy="7" r="4"/>
           </svg>
@@ -99,64 +57,39 @@
 
         <a href="Facturas.html" class="icon-btn" aria-label="Facturas">
           <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none"
-               stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
             <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
             <polyline points="14,2 14,8 20,8"/>
             <line x1="16" y1="13" x2="8" y2="13"/>
             <line x1="16" y1="17" x2="8" y2="17"/>
-            <polyline points="10,9 9,9 8,9"/>
           </svg>
         </a>
 
         <div class="cart-icon-wrapper">
-          <button id="openCart" class="icon-btn cart-btn" aria-label="Carrito">
+          <a href="Carrito.html" class="icon-btn cart-btn" id="openCart" aria-label="Carrito">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                 stroke="currentColor" stroke-width="1.9"
-                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  stroke="currentColor" stroke-width="1.9"
+                  stroke-linecap="round" stroke-linejoin="round">
               <circle cx="9"  cy="19" r="1.6"/>
               <circle cx="17" cy="19" r="1.6"/>
               <path d="M3 4h2.2l1.8 9.2a1 1 0 0 0 1 .8h8.9a1 1 0 0 0 1-.7L20 7H6.3"/>
             </svg>
             <span id="cartBadge" class="cart-badge">0</span>
-          </button>
+          </a>
         </div>
 
-        <button class="hamburger" id="menuToggle" aria-label="Menú">
+        <button class="hamburger" id="menuToggle">
           <span></span><span></span><span></span>
         </button>
       </div>
     </div>
-
-    <!-- Menú mobile -->
-    <nav class="mobile-menu" id="mobileMenu">
-      <a href="#">Hombre</a>
-      <a href="#">Mujer</a>
-      <a href="#">Kids</a>
-      <a href="#">Ofertas</a>
-      <div class="mobile-search">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none"
-             stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-          <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
-        </svg>
-        <input type="text" name="busqueda-mobile" placeholder="Buscar..."
-               autocomplete="new-password" autocorrect="off"
-               autocapitalize="none" spellcheck="false"
-               readonly onfocus="this.removeAttribute('readonly')" />
-      </div>
-    </nav>
   </header>
 
-
-  <!-- ═══════════════════════════════════
-       MAIN
-  ═══════════════════════════════════ -->
   <main>
-
-    <!-- Hero -->
     <section class="hero">
       <div class="hero-content">
         <p class="hero-tag">NUEVA TENDENCIA</p>
-        <h1 class="hero-title">Zapatos deportivos<br /></h1><br />
+        <h1 class="hero-title">Zapatos deportivos</h1>
         <div class="hero-btns">
           <a href="#productos" class="btn-primary">Comprar ahora</a>
           <a href="#catalogo"  class="btn-outline">Ver catálogo</a>
@@ -164,47 +97,12 @@
       </div>
     </section>
 
-    <!-- Carrusel -->
     <section class="carousel-section" id="productos">
       <div class="carousel-track" id="carouselTrack">
-        <div class="shoe-card" onclick="openProduct(0)">
-          <span class="card-badge">PROMO</span>
-          <div class="card-img" style="background:linear-gradient(135deg,#c8d8f0,#7aaad4)">
-            <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&q=80" alt="Junior Bolt"/>
-          </div>
-          <div class="card-info"><h3>Junior Bolt</h3><p>Diversión en cada paso</p></div>
-        </div>
-        <div class="shoe-card" onclick="openProduct(1)">
-          <span class="card-badge nuevo">NUEVO</span>
-          <div class="card-img" style="background:linear-gradient(135deg,#c8d8f0,#7aaad4)">
-            <img src="https://images.unsplash.com/photo-1608231387042-66d1773070a5?w=400&q=80" alt="Air Runner Blue"/>
-          </div>
-          <div class="card-info"><h3>Air Runner Blue</h3><p>Ligereza urbana</p></div>
-        </div>
-        <div class="shoe-card" onclick="openProduct(2)">
-          <span class="card-badge sale">OFERTA</span>
-          <div class="card-img" style="background:linear-gradient(135deg,#c8d8f0,#7aaad4)">
-            <img src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?w=400&q=80" alt="Street Force"/>
-          </div>
-          <div class="card-info"><h3>Street Force</h3><p>Estilo sin límites</p></div>
-        </div>
-        <div class="shoe-card" onclick="openProduct(3)">
-          <span class="card-badge">MAS VENDIDO</span>
-          <div class="card-img" style="background:linear-gradient(135deg,#c8d8f0,#7aaad4)">
-            <img src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=400&q=80" alt="EcoStep Pro"/>
-          </div>
-          <div class="card-info"><h3>EcoStep Pro</h3><p>Rendimiento sostenible</p></div>
-        </div>
-      </div>
-      <div class="carousel-dots">
-        <button class="dot active" onclick="goToSlide(0)"></button>
-        <button class="dot"        onclick="goToSlide(1)"></button>
-        <button class="dot"        onclick="goToSlide(2)"></button>
-        <button class="dot"        onclick="goToSlide(3)"></button>
+        <p style="text-align:center; width:100%;">Cargando productos...</p>
       </div>
     </section>
 
-    <!-- Categorías -->
     <section class="categorias" id="catalogo">
       <h2 class="section-title">Explora por categoría</h2>
       <div class="cat-grid">
@@ -213,259 +111,14 @@
         <a href="categoria.html?cat=running" class="cat-card"><span class="cat-icon">🏃</span><span>Running</span></a>
       </div>
     </section>
-
-    <!-- Más vendidos -->
-    <section class="destacados">
-      <h2 class="section-title">Más vendidos</h2>
-      <div class="productos-grid">
-
-        <div class="producto-card">
-          <div class="producto-img">
-            <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=300&q=80" alt="Nike"/>
-            <button class="add-cart" onclick="openProduct(0)">+ Agregar</button>
-          </div>
-          <div class="producto-info">
-            <span class="producto-marca">Nike</span>
-            <h4>Air Max 270</h4>
-            <div class="producto-precio">
-              <span class="precio">$89.99</span><span class="precio-old">$120.00</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="producto-card">
-          <div class="producto-img">
-            <img src="https://images.unsplash.com/photo-1608231387042-66d1773070a5?w=300&q=80" alt="Adidas"/>
-            <button class="add-cart" onclick="openProduct(1)">+ Agregar</button>
-          </div>
-          <div class="producto-info">
-            <span class="producto-marca">Adidas</span>
-            <h4>Ultraboost 22</h4>
-            <div class="producto-precio"><span class="precio">$109.99</span></div>
-          </div>
-        </div>
-
-        <div class="producto-card">
-          <div class="producto-img">
-            <img src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?w=300&q=80" alt="Puma"/>
-            <button class="add-cart" onclick="openProduct(2)">+ Agregar</button>
-          </div>
-          <div class="producto-info">
-            <span class="producto-marca">Puma</span>
-            <h4>RS-X Bold</h4>
-            <div class="producto-precio">
-              <span class="precio">$74.99</span><span class="precio-old">$95.00</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="producto-card">
-          <div class="producto-img">
-            <img src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=300&q=80" alt="NB"/>
-            <button class="add-cart" onclick="openProduct(3)">+ Agregar</button>
-          </div>
-          <div class="producto-info">
-            <span class="producto-marca">New Balance</span>
-            <h4>Fresh Foam 1080</h4>
-            <div class="producto-precio"><span class="precio">$129.99</span></div>
-          </div>
-        </div>
-
-      </div>
-    </section>
   </main>
 
-
-  <!-- ═══════════════════════════════════
-       FOOTER
-  ═══════════════════════════════════ -->
   <footer class="footer">
     <div class="footer-inner">
       <p class="footer-logo">STREET<span>KICKS</span></p>
       <p class="footer-copy">© 2026 StreetKicks. Todos los derechos reservados.</p>
     </div>
   </footer>
-
-
-  <!-- ═══════════════════════════════════
-       MODAL — PRODUCTO
-  ═══════════════════════════════════ -->
-  <div class="overlay" id="productOverlay" onclick="closeProduct(event)">
-    <div class="product-modal">
-      <button class="modal-close" onclick="closeProductModal()">✕</button>
-      <div class="pm-left">
-        <div class="pm-main-img"><img id="pmMainImg" src="" alt="" /></div>
-        <div class="pm-thumbs" id="pmThumbs"></div>
-      </div>
-      <div class="pm-right">
-        <p class="pm-brand"  id="pmBrand"></p>
-        <h2 class="pm-name"  id="pmName"></h2>
-        <p class="pm-price"  id="pmPrice"></p>
-        <p class="pm-desc"   id="pmDesc"></p>
-        <div class="pm-info-box" id="pmInfoBox"></div>
-        <div class="pm-sizes">
-          <p class="pm-size-label">Talla · <span id="selectedSize">-</span></p>
-          <div class="pm-size-grid" id="pmSizeGrid"></div>
-        </div>
-        <button class="btn-add-cart" onclick="addToCart()">🛒 Añadir al carrito</button>
-      </div>
-    </div>
-  </div>
-
-
-  <!-- ═══════════════════════════════════
-       PANEL — CARRITO
-  ═══════════════════════════════════ -->
-  <div class="cart-overlay" id="cartOverlay" onclick="closeCartEvent(event)">
-    <div class="cart-panel">
-      <div class="cart-header">
-        <h3>Tu carrito</h3>
-        <button onclick="closeCart()">✕</button>
-      </div>
-      <div class="cart-items" id="cartItems"></div>
-      <div class="cart-footer">
-        <div class="cart-total-row"><span>Total</span><span id="cartTotal">$0.00</span></div>
-        <button class="btn-checkout" onclick="openCheckout()">Pagar ahora</button>
-      </div>
-    </div>
-  </div>
-
-
-  <!-- ═══════════════════════════════════
-       MODAL — CHECKOUT
-  ═══════════════════════════════════ -->
-  <div class="overlay" id="checkoutOverlay" onclick="closeCheckoutEvent(event)">
-    <div class="checkout-modal">
-      <button class="modal-close" onclick="closeCheckout()">✕</button>
-      <h2 class="checkout-title">Checkout — Simulación</h2>
-      <p class="checkout-sub">Sin cobros reales. Solo demo.</p>
-      <div class="checkout-steps">
-        <div class="step active" id="step-0">Correo</div>
-        <div class="step"        id="step-1">Dirección</div>
-        <div class="step"        id="step-2">Resumen</div>
-        <div class="step"        id="step-3">Pago</div>
-      </div>
-
-      <!-- Paso 0: Correo -->
-      <div class="checkout-pane" id="pane-0">
-        <p class="pane-title">✉️ Tu correo</p>
-        <label>Correo electrónico</label>
-        <input type="email" id="inEmail" placeholder="ejemplo@correo.com" />
-        <span class="field-error" id="errEmail"></span>
-        <label>Contraseña</label>
-        <div class="pass-wrap">
-          <input type="password" id="inPass" placeholder="Mínimo 6 caracteres" />
-          <button type="button" class="toggle-pass" onclick="togglePass()">👁</button>
-        </div>
-        <span class="field-error" id="errPass"></span>
-        <button class="btn-primary full" onclick="nextStep(0)">Continuar</button>
-      </div>
-
-      <!-- Paso 1: Dirección -->
-      <div class="checkout-pane hidden" id="pane-1">
-        <p class="pane-title">📍 Dirección de envío</p>
-        <label>Nombre completo</label>
-        <input type="text" id="inNombre" placeholder="Solo letras"
-               oninput="soloLetras(this,'errNombre')" />
-        <span class="field-error" id="errNombre"></span>
-        <label>Calle y número</label>
-        <input type="text" id="inCalle" placeholder="Ej: Av. Principal 123" />
-        <span class="field-error" id="errCalle"></span>
-        <div class="row-2">
-          <div>
-            <label>Ciudad</label>
-            <input type="text" id="inCiudad" placeholder="Solo letras"
-                   oninput="soloLetras(this,'errCiudad')" />
-            <span class="field-error" id="errCiudad"></span>
-          </div>
-          <div>
-            <label>C.P.</label>
-            <input type="text" id="inCP" placeholder="Solo números" maxlength="10"
-                   oninput="soloNumeros(this,'errCP')" />
-            <span class="field-error" id="errCP"></span>
-          </div>
-        </div>
-        <label>País</label>
-        <select id="inPais">
-          <option value="">Selecciona tu país</option>
-          <option>Ecuador</option><option>México</option><option>Colombia</option>
-          <option>Argentina</option><option>Perú</option><option>Chile</option>
-          <option>Venezuela</option><option>Bolivia</option><option>Uruguay</option>
-          <option>Paraguay</option><option>España</option><option>Estados Unidos</option>
-        </select>
-        <span class="field-error" id="errPais"></span>
-        <button class="btn-primary full" onclick="nextStep(1)">Continuar</button>
-      </div>
-
-      <!-- Paso 2: Resumen -->
-      <div class="checkout-pane hidden" id="pane-2">
-        <div class="resumen-box">
-          <p class="resumen-label">RESUMEN</p>
-          <p id="resCorreo"></p>
-          <p id="resEnvio"></p>
-          <p id="resArticulos"></p>
-          <div class="resumen-total-row">
-            <span>Total</span>
-            <span id="resTotal" class="resumen-total"></span>
-          </div>
-        </div>
-        <p style="text-align:center;color:#666;margin:1rem 0 0.5rem;font-size:0.9rem">
-          ¿Qué deseas hacer?
-        </p>
-        <button class="btn-outline full" onclick="closeCheckout()">🛍 Seguir comprando</button>
-        <button class="btn-primary full" onclick="nextStep(2)" style="margin-top:0.5rem">
-          💳 Continuar al pago
-        </button>
-      </div>
-
-      <!-- Paso 3: Pago -->
-      <div class="checkout-pane hidden" id="pane-3">
-        <p class="pane-title">💳 Tarjeta de crédito</p>
-        <div class="card-visual">
-          <p class="card-dots" id="cardDotsDisplay">•••• •••• •••• ••••</p>
-          <div class="card-bottom">
-            <span id="cardNameDisplay">TU NOMBRE</span>
-            <span id="cardExpDisplay">MM/AA</span>
-          </div>
-        </div>
-        <label>Número de tarjeta</label>
-        <input type="text" id="inCardNum" placeholder="4242 4242 4242 4242"
-               maxlength="19" oninput="formatCardNum(this)" />
-        <span class="field-error" id="errCardNum"></span>
-        <label>Titular</label>
-        <input type="text" id="inCardName" placeholder="Como aparece en la tarjeta"
-               oninput="soloLetrasCard(this)" />
-        <span class="field-error" id="errCardName"></span>
-        <div class="row-2">
-          <div>
-            <label>Vencimiento</label>
-            <input type="text" id="inCardExp" placeholder="MM/AA"
-                   maxlength="5" oninput="formatExp(this)" />
-            <span class="field-error" id="errCardExp"></span>
-          </div>
-          <div>
-            <label>CVC</label>
-            <input type="text" id="inCardCvc" placeholder="123"
-                   maxlength="4" oninput="soloNumeros(this,'errCardCvc')" />
-            <span class="field-error" id="errCardCvc"></span>
-          </div>
-        </div>
-        <button class="btn-primary full" id="btnPagar" onclick="pagarAhora()">🔒 Pagar</button>
-        <p style="text-align:center;font-size:0.78rem;color:#999;margin-top:0.5rem">
-          Pago simulado · No se realizará ningún cobro real
-        </p>
-      </div>
-    </div>
-  </div>
-
-  <div class="overlay" id="successOverlay">
-    <div class="success-modal">
-      <div class="success-icon">✅</div>
-      <h2>¡Pedido confirmado!</h2>
-      <p>Gracias por tu compra simulada. Tu pedido está en camino.</p>
-      <button class="btn-primary" onclick="closeSuccess()">Volver a la tienda</button>
-    </div>
-  </div>
 
   <script src="UserAuth.js"></script>
   <script src="Menu.js"></script>
