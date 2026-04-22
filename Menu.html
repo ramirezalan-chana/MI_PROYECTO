@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>STREETKICKS</title>
+  <title>STREETKICKS - Tienda Oficial</title>
   <link rel="stylesheet" href="Diseño_menu.css" />
   <link rel="stylesheet" href="Carrito.css" />
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet" />
@@ -16,73 +16,42 @@
       <a href="Menu.html" class="logo">SPORTS<span>SHOES</span></a>
 
       <div class="search-bar">
-        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none"
-              stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
           <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
         </svg>
-        <input type="text" name="busqueda-menu"
-                placeholder="Busca por modelo, marca o categoría..."
-                autocomplete="off" />
+        <input type="text" placeholder="Busca por modelo..." />
       </div>
 
-      <div class="nav-icons">
+    <div class="nav-icons">
+      <button class="icon-btn" aria-label="Ubicación">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/>
+        </svg>
+      </button>
 
-        <div class="menu-user-slot" id="menuUserSlot">
-          <button type="button" class="menu-user-chip hidden" id="menuUserChip">
-            <div class="menu-user-avatar" id="menuUserAvatar">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none"
-                    stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/>
-                <circle cx="12" cy="7" r="4"/>
-              </svg>
-            </div>
-          </button>
-        </div>
+      <a href="Usuario.html" class="icon-btn" id="btnIrUsuario" aria-label="Usuario">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/>
+        </svg>
+      </a>
 
-        <button class="icon-btn" aria-label="Ubicación">
-          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none"
-                stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/>
-            <circle cx="12" cy="10" r="3"/>
+      <a href="Facturas.html" class="icon-btn" aria-label="Facturas">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/>
+        </svg>
+      </a>
+
+      <div class="cart-icon-wrapper">
+        <a href="Carrito.html" class="icon-btn cart-btn" aria-label="Carrito">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9">
+            <circle cx="9" cy="19" r="1.6"/><circle cx="17" cy="19" r="1.6"/>
+            <path d="M3 4h2.2l1.8 9.2a1 1 0 0 0 1 .8h8.9a1 1 0 0 0 1-.7L20 7H6.3"/>
           </svg>
-        </button>
-
-        <a href="Usuario.html" class="icon-btn" id="btnIrUsuario" aria-label="Usuario">
-          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none"
-                stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/>
-            <circle cx="12" cy="7" r="4"/>
-          </svg>
+          <span id="cartBadge" class="cart-badge">0</span>
         </a>
-
-        <a href="Facturas.html" class="icon-btn" aria-label="Facturas">
-          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none"
-                stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
-            <polyline points="14,2 14,8 20,8"/>
-            <line x1="16" y1="13" x2="8" y2="13"/>
-            <line x1="16" y1="17" x2="8" y2="17"/>
-          </svg>
-        </a>
-
-        <div class="cart-icon-wrapper">
-          <a href="Carrito.html" class="icon-btn cart-btn" id="openCart" aria-label="Carrito">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="1.9"
-                  stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="9"  cy="19" r="1.6"/>
-              <circle cx="17" cy="19" r="1.6"/>
-              <path d="M3 4h2.2l1.8 9.2a1 1 0 0 0 1 .8h8.9a1 1 0 0 0 1-.7L20 7H6.3"/>
-            </svg>
-            <span id="cartBadge" class="cart-badge">0</span>
-          </a>
-        </div>
-
-        <button class="hamburger" id="menuToggle">
-          <span></span><span></span><span></span>
-        </button>
       </div>
     </div>
+  </div>
   </header>
 
   <main>
@@ -92,31 +61,21 @@
         <h1 class="hero-title">Zapatos deportivos</h1>
         <div class="hero-btns">
           <a href="#productos" class="btn-primary">Comprar ahora</a>
-          <a href="#catalogo"  class="btn-outline">Ver catálogo</a>
+          <a href="categoria.html?cat=running" class="btn-outline">Ver catálogo</a>
         </div>
       </div>
     </section>
 
     <section class="carousel-section" id="productos">
       <div class="carousel-track" id="carouselTrack">
-        <p style="text-align:center; width:100%;">Cargando productos...</p>
-      </div>
-    </section>
-
-    <section class="categorias" id="catalogo">
-      <h2 class="section-title">Explora por categoría</h2>
-      <div class="cat-grid">
-        <a href="categoria.html?cat=hombre"  class="cat-card"><span class="cat-icon">👟</span><span>Hombre</span></a>
-        <a href="categoria.html?cat=mujer"   class="cat-card"><span class="cat-icon">👠</span><span>Mujer</span></a>
-        <a href="categoria.html?cat=running" class="cat-card"><span class="cat-icon">🏃</span><span>Running</span></a>
-      </div>
+        </div>
     </section>
   </main>
 
   <footer class="footer">
     <div class="footer-inner">
       <p class="footer-logo">STREET<span>KICKS</span></p>
-      <p class="footer-copy">© 2026 StreetKicks. Todos los derechos reservados.</p>
+      <p>© 2026 StreetKicks. Proyecto Educativo.</p>
     </div>
   </footer>
 
