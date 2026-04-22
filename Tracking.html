@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StreetKicks · Tracking</title>
+  <link rel="stylesheet" href="Tracking.css">
+</head>
+<body>
+
+<!-- ── Header ──────────────────────────────────────────── -->
+<header>
+  <span class="logo">STREET<span>KICKS</span></span>
+  <a class="back-btn" href="Pedidos.html">
+    <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <path d="M19 12H5M12 5l-7 7 7 7"/>
+    </svg>
+    Mis Pedidos
+  </a>
+</header>
+
+<!-- ── Mapa simulado ────────────────────────────────────── -->
+<div class="map-wrapper">
+  <div class="map-grid"></div>
+
+  <!-- Calles horizontales -->
+  <div class="road-h" style="top:38%;left:0;right:0;"></div>
+  <div class="road-h" style="top:65%;left:0;right:0;"></div>
+
+  <!-- Calles verticales -->
+  <div class="road-v" style="left:22%;top:0;bottom:0;"></div>
+  <div class="road-v" style="left:55%;top:0;bottom:0;"></div>
+  <div class="road-v" style="left:78%;top:0;bottom:0;"></div>
+
+  <!-- Ruta SVG (curva Bézier cúbica) -->
+  <svg class="map-svg" viewBox="0 0 900 320" preserveAspectRatio="none">
+    <defs>
+      <linearGradient id="routeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%"   stop-color="#1a6fff" stop-opacity="0.3"/>
+        <stop offset="100%" stop-color="#1a6fff" stop-opacity="1"/>
+      </linearGradient>
+      <filter id="glow">
+        <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+        <feMerge>
+          <feMergeNode in="coloredBlur"/>
+          <feMergeNode in="SourceGraphic"/>
+        </feMerge>
+      </filter>
+    </defs>
+    <!-- Línea discontinua de fondo -->
+    <path d="M 145 210 C 300 210 400 130 680 95"
+          fill="none" stroke="url(#routeGrad)"
+          stroke-width="3.5" stroke-dasharray="8,4" opacity="0.5"/>
+    <!-- Línea brillante de frente -->
+    <path d="M 145 210 C 300 210 400 130 680 95"
+          fill="none" stroke="#1a6fff"
+          stroke-width="2.5" stroke-linecap="round"
+          filter="url(#glow)" opacity="0.8"/>
+  </svg>
+
+  <!-- Marcador de origen -->
+  <div class="origin-marker" style="left:16%;top:66%;">
+    <div class="origin-inner"></div>
+  </div>
+
+  <!-- Pin de destino (punto de retiro) -->
+  <div class="dest-marker" style="left:75.5%;top:32%;">
+    <svg width="28" height="36" viewBox="0 0 28 36" fill="none">
+      <path d="M14 0C6.27 0 0 6.27 0 14c0 9.92 14 22 14 22s14-12.08 14-22C28 6.27 21.73 0 14 0z" fill="#1a6fff"/>
+      <circle cx="14" cy="14" r="6" fill="white"/>
+      <circle cx="14" cy="14" r="3" fill="#1a6fff"/>
+    </svg>
+  </div>
+
+  <!-- Camión animado (posición inicial fijada por Tracking.js) -->
+  <div class="truck-marker" id="truckMarker" style="left:16%;top:66%;">
+    <div class="truck-pulse"></div>
+    <div class="truck-inner">🚚</div>
+  </div>
+
+  <!-- Badge de estado -->
+  <div class="status-badge">
+    <span class="status-dot"></span>
+    En tránsito
+  </div>
+
+  <!-- Badge de punto de retiro -->
+  <div class="pickup-badge">
+    PUNTO DE RETIRO
+    <small>Av. Reforma 247 · 1.2 km</small>
+  </div>
+</div>
+
+<!-- ── Barra ETA ─────────────────────────────────────────── -->
+<div class="eta-bar">
+  <div class="eta-item">
+    <div class="eta-value" id="etaHours">00</div>
+    <div class="eta-label">Horas</div>
+  </div>
+  <div class="eta-sep"></div>
+  <div class="eta-item">
+    <div class="eta-value" id="etaMins">47</div>
+    <div class="eta-label">Minutos</div>
+  </div>
+  <div class="eta-sep"></div>
+  <div class="eta-item">
+    <div class="eta-value" id="etaSecs">00</div>
+    <div class="eta-label">Segundos</div>
+  </div>
+  <div class="eta-sep"></div>
+  <div class="eta-item">
+    <div class="eta-value">1.2</div>
+    <div class="eta-label">km restante</div>
+  </div>
+  <div class="eta-sep"></div>
+  <div class="eta-item">
+    <div class="eta-value" style="color:var(--green)">16</div>
+    <div class="eta-label">Abr estimado</div>
+  </div>
+</div>
+
+<!-- ── Barra de progreso ─────────────────────────────────── -->
+<div class="progress-wrap">
+  <div class="progress-track">
+    <div class="progress-fill" id="progressFill" style="width:62%"></div>
+  </div>
+  <div class="progress-labels">
+    <span>Almacén origen</span>
+    <span id="progressPct">62% completado</span>
+    <span>Punto de retiro</span>
+  </div>
+</div>
+
+<!-- ── Timeline del estado ───────────────────────────────── -->
+<div class="timeline-section">
+  <div class="section-title">Estado del Envío</div>
+  <div class="timeline">
+
+    <div class="tl-item">
+      <div class="tl-icon-wrap">
+        <div class="tl-line"></div>
+        <div class="tl-icon done">✓</div>
+      </div>
+      <div class="tl-content">
+        <div class="tl-title">Pedido confirmado</div>
+        <div class="tl-time">12 Abr · 14:32</div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-icon-wrap">
+        <div class="tl-line"></div>
+        <div class="tl-icon done">✓</div>
+      </div>
+      <div class="tl-content">
+        <div class="tl-title">Preparado en almacén</div>
+        <div class="tl-time">13 Abr · 09:15</div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-icon-wrap">
+        <div class="tl-line"></div>
+        <div class="tl-icon active">🚚</div>
+      </div>
+      <div class="tl-content">
+        <div class="tl-title">En camino</div>
+        <div class="tl-time">14 Abr · 11:40</div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-icon-wrap">
+        <div class="tl-icon pending">📍</div>
+      </div>
+      <div class="tl-content">
+        <div class="tl-title pending">Listo para retirar</div>
+        <div class="tl-time est">16 Abr · estimado</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ── Puntos de retiro ──────────────────────────────────── -->
+<div class="pickup-section">
+  <div class="section-title">Puntos de Retiro y Devolución</div>
+  <div class="pickup-grid">
+
+    <div class="pickup-card nearest">
+      <div class="pickup-pin">📍</div>
+      <div class="pickup-info">
+        <div class="pickup-name">SOLE/STREET Centro</div>
+        <div class="pickup-addr">Av. Reforma 247</div>
+        <div class="pickup-hours">Lun-Sáb · 10–20h</div>
+        <span class="nearest-tag">más cercano</span>
+      </div>
+      <div class="pickup-dist">1.2 km</div>
+    </div>
+
+    <div class="pickup-card">
+      <div class="pickup-pin">📍</div>
+      <div class="pickup-info">
+        <div class="pickup-name">Punto Express Roma</div>
+        <div class="pickup-addr">Calle Orizaba 88</div>
+        <div class="pickup-hours">Lun-Dom · 9–22h</div>
+      </div>
+      <div class="pickup-dist">2.8 km</div>
+    </div>
+
+    <div class="pickup-card">
+      <div class="pickup-pin">📍</div>
+      <div class="pickup-info">
+        <div class="pickup-name">Locker 24/7 Polanco</div>
+        <div class="pickup-addr">Av. Presidente Masaryk 12</div>
+        <div class="pickup-hours">24/7</div>
+      </div>
+      <div class="pickup-dist">5.4 km</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ── Script ───────────────────────────────────────────── -->
+<script src="Tracking.js"></script>
+</body>
+</html>

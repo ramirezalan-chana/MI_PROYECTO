@@ -1,0 +1,324 @@
+/* ===========================
+   facturas.css - Página Mis Facturas
+   =========================== */
+
+.facturas-wrapper {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1.25rem 1.5rem 4rem;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: .3rem;
+  font-size: .88rem;
+  color: var(--gray-text);
+  text-decoration: none;
+  margin-bottom: 1.25rem;
+  transition: color .15s;
+}
+.back-link:hover { color: var(--blue); }
+
+/* ENCABEZADO */
+.facturas-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+.facturas-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  font-size: 2.4rem;
+  line-height: 1.1;
+}
+.facturas-sub {
+  font-size: .9rem;
+  color: var(--gray-text);
+  margin-top: .2rem;
+}
+.facturas-search-box {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  border: 1.5px solid var(--gray-mid);
+  border-radius: 999px;
+  padding: .55rem 1rem;
+  color: var(--gray-text);
+  background: white;
+  min-width: 280px;
+  transition: border-color .2s;
+}
+.facturas-search-box:focus-within { border-color: var(--blue); }
+.facturas-search-box input {
+  border: none;
+  background: transparent;
+  outline: none;
+  font-family: 'Barlow', sans-serif;
+  font-size: .9rem;
+  color: var(--black);
+  width: 100%;
+}
+.facturas-search-box input::placeholder { color: var(--gray-text); }
+
+/* FILTROS ESTADO */
+.facturas-filtros {
+  display: flex;
+  gap: .5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+.filtro-estado {
+  padding: .45rem 1.1rem;
+  border-radius: 999px;
+  border: 1.5px solid var(--gray-mid);
+  background: white;
+  font-family: 'Barlow', sans-serif;
+  font-weight: 600;
+  font-size: .85rem;
+  cursor: pointer;
+  transition: all .15s;
+  color: var(--gray-text);
+}
+.filtro-estado:hover { border-color: var(--blue); color: var(--blue); }
+.filtro-estado.active {
+  background: var(--blue);
+  border-color: var(--blue);
+  color: white;
+}
+
+/* TARJETA FACTURA */
+.factura-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.1rem 1.25rem;
+  border: 1.5px solid var(--gray-mid);
+  border-radius: 14px;
+  background: white;
+  margin-bottom: .75rem;
+  transition: box-shadow .2s;
+  flex-wrap: wrap;
+}
+.factura-card:hover { box-shadow: 0 4px 18px rgba(0,0,0,.08); }
+.factura-card.card-cancelada { border-color: #fecaca; background: #fff8f8; }
+
+.fc-left {
+  display: flex;
+  align-items: flex-start;
+  gap: .9rem;
+  flex: 1;
+  min-width: 0;
+}
+.fc-icon-wrap {
+  width: 44px;
+  height: 44px;
+  background: #edf3ff;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.fc-datos { min-width: 0; }
+.fc-titulo-row {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  flex-wrap: wrap;
+  margin-bottom: .2rem;
+}
+.fc-numero { font-weight: 700; font-size: .98rem; }
+.fc-meta { font-size: .8rem; color: var(--gray-text); }
+.fc-cancelacion-msg { font-size: .8rem; color: #e53e3e; margin-top: .2rem; }
+
+/* BADGES */
+.estado-badge {
+  display: inline-block;
+  padding: .2rem .7rem;
+  border-radius: 999px;
+  font-size: .75rem;
+  font-weight: 700;
+}
+.badge-procesando { background: #fff3cd; color: #856404; }
+.badge-completado  { background: #d1fae5; color: #065f46; }
+.badge-cancelado   { background: #fee2e2; color: #991b1b; }
+
+/* DERECHA */
+.fc-right {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  flex-shrink: 0;
+}
+.fc-monto {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: .1rem;
+}
+.fc-total { font-weight: 700; font-size: 1.1rem; color: var(--blue); }
+.fc-art-count { font-size: .78rem; color: var(--gray-text); }
+
+/* BOTONES */
+.btn-ver-pedido {
+  padding: .5rem 1rem;
+  border: 1.5px solid var(--gray-mid);
+  border-radius: 8px;
+  background: white;
+  font-family: 'Barlow', sans-serif;
+  font-weight: 600;
+  font-size: .85rem;
+  cursor: pointer;
+  color: var(--black);
+  transition: all .15s;
+  white-space: nowrap;
+}
+.btn-ver-pedido:hover { border-color: var(--blue); color: var(--blue); }
+
+.btn-pdf {
+  display: flex;
+  align-items: center;
+  gap: .35rem;
+  padding: .5rem 1rem;
+  background: var(--blue);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-family: 'Barlow', sans-serif;
+  font-weight: 600;
+  font-size: .85rem;
+  cursor: pointer;
+  transition: background .15s;
+  white-space: nowrap;
+}
+.btn-pdf:hover { background: var(--blue-dark); }
+
+/* ÍCONO ACTIVO EN NAV */
+.icon-active { color: var(--blue) !important; }
+
+/* VACÍO */
+.facturas-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .6rem;
+  padding: 4rem 2rem;
+  text-align: center;
+  color: var(--gray-text);
+}
+.facturas-empty.hidden { display: none; }
+.f-empty-icon { font-size: 3rem; }
+.facturas-empty h3 { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 1.4rem; color: var(--black); }
+
+/* MODAL PEDIDO */
+.pedido-modal {
+  background: white;
+  border-radius: 20px;
+  max-width: 580px;
+  width: 100%;
+  max-height: 88vh;
+  overflow-y: auto;
+  padding: 2rem;
+  position: relative;
+}
+.pm-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+.pm-titulo {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  font-size: 1.6rem;
+}
+.pm-meta { font-size: .82rem; color: var(--gray-text); margin-top: .2rem; }
+
+/* TABLA MODAL */
+.pm-tabla { margin-bottom: 1.25rem; }
+.pm-thead {
+  display: grid;
+  grid-template-columns: 1fr 60px 50px 80px;
+  gap: .5rem;
+  padding: .5rem .75rem;
+  background: var(--gray-light);
+  border-radius: 8px 8px 0 0;
+  font-size: .75rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--gray-text);
+}
+.pm-trow {
+  display: grid;
+  grid-template-columns: 1fr 60px 50px 80px;
+  gap: .5rem;
+  align-items: center;
+  padding: .75rem;
+  border-bottom: 1px solid var(--gray-mid);
+}
+.pm-art-n { font-weight: 600; font-size: .9rem; }
+.pm-art-m { font-size: .78rem; color: var(--gray-text); }
+.pm-art-p { text-align: right; font-weight: 700; }
+
+/* TOTALES MODAL */
+.pm-totales {
+  background: var(--gray-light);
+  border-radius: 10px;
+  padding: .75rem 1rem;
+  margin-bottom: 1.25rem;
+}
+.pm-tot {
+  display: flex;
+  justify-content: space-between;
+  font-size: .88rem;
+  padding: .35rem 0;
+  border-bottom: 1px solid var(--gray-mid);
+}
+.pm-tot:last-child { border-bottom: none; }
+.pm-tot-final {
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--blue);
+  padding-top: .6rem;
+}
+
+/* ACCIONES MODAL */
+.pm-acciones {
+  display: flex;
+  gap: .75rem;
+  flex-wrap: wrap;
+}
+.btn-cancelar-pedido {
+  padding: .55rem 1.1rem;
+  border: 1.5px solid #fecaca;
+  border-radius: 8px;
+  background: white;
+  color: #e53e3e;
+  font-family: 'Barlow', sans-serif;
+  font-weight: 600;
+  font-size: .88rem;
+  cursor: pointer;
+  transition: all .15s;
+}
+.btn-cancelar-pedido:hover { background: #fee2e2; }
+
+/* RESPONSIVE */
+@media (max-width: 700px) {
+  .facturas-header { flex-direction: column; align-items: flex-start; }
+  .facturas-search-box { min-width: 100%; width: 100%; }
+  .factura-card { flex-direction: column; align-items: flex-start; }
+  .fc-right { width: 100%; justify-content: flex-end; }
+  .pm-thead, .pm-trow { grid-template-columns: 1fr 50px 40px 70px; }
+}
+@media (max-width: 480px) {
+  .facturas-wrapper { padding: 1rem 1rem 3rem; }
+  .facturas-title { font-size: 1.9rem; }
+  .btn-ver-pedido, .btn-pdf { font-size: .8rem; padding: .45rem .8rem; }
+}

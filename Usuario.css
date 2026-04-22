@@ -1,0 +1,245 @@
+/* ===== RESET Y LIMPIEZA DE NAVEGADOR ===== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ELIMINAR OJOS Y ELEMENTOS NATIVOS (image_0131d8 / image_0140b7) */
+input::-ms-reveal,
+input::-ms-clear,
+input::-webkit-contacts-auto-fill-button,
+input::-webkit-credentials-auto-fill-button {
+  display: none !important;
+}
+
+/* Evitar cajas de autocompletado raras */
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px white inset !important;
+}
+
+body {
+  font-family: 'Inter', -apple-system, sans-serif;
+  background-color: #f8f9fc;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* 1. BARRA SUPERIOR NEGRA (Fija y centrada) */
+.top-promo-bar {
+  background-color: #000;
+  color: #fff;
+  text-align: center;
+  padding: 12px 0;
+  font-size: 13px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+.top-promo-bar a { color: #fff; font-weight: 600; }
+
+/* ===== BOTÓN VOLVER ===== */
+.usuario-back-floating {
+  position: absolute;
+  top: 75px;
+  left: 20px;
+  text-decoration: none;
+  color: #111;
+  font-size: 14px;
+  font-weight: 500;
+  z-index: 10;
+}
+
+/* ===== TARJETA PRINCIPAL (Centrado perfecto) ===== */
+.usuario-auth-shell {
+  width: 100%;
+  max-width: 520px;
+  margin: 100px 0 40px 0; /* Espacio para barra y margen inferior */
+  padding: 0 20px;
+}
+
+.usuario-auth-card {
+  background: #ffffff;
+  border-radius: 32px;
+  padding: 40px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.04);
+  text-align: center;
+}
+
+.usuario-auth-head h1 { font-size: 32px; margin-bottom: 12px; }
+.usuario-auth-text { color: #666; font-size: 14px; line-height: 1.5; margin-bottom: 20px; }
+.usuario-auth-note { background: #f1f5f9; padding: 12px; border-radius: 12px; font-size: 12px; color: #475569; margin-bottom: 30px; }
+
+/* ===== TABS (Diseño de cápsula) ===== */
+.usuario-tabs {
+  display: flex;
+  background: #f1f5f9;
+  padding: 6px;
+  border-radius: 16px;
+  margin-bottom: 30px;
+}
+
+.usuario-tab {
+  flex: 1;
+  border: none;
+  padding: 12px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  background: transparent;
+  color: #64748b;
+  transition: all 0.2s;
+}
+
+.usuario-tab.active {
+  background: #fff;
+  color: #111;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+/* ===== FORMULARIO E INPUTS ===== */
+.usuario-field {
+  margin-bottom: 20px;
+  position: relative;
+  text-align: left;
+}
+
+.usuario-field label {
+  display: block;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  color: #94a3b8;
+  letter-spacing: 0.5px;
+}
+
+.usuario-field input {
+  width: 100%;
+  padding: 16px;
+  border-radius: 14px;
+  border: 1px solid #e2e8f0;
+  background: #fff;
+  font-size: 16px;
+  transition: border 0.2s;
+}
+
+.usuario-field input:focus {
+  outline: none;
+  border-color: #2563eb;
+}
+
+.usuario-toggle-pass {
+  position: absolute;
+  right: 16px;
+  top: 36px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  opacity: 0.5;
+}
+
+/* ===== DISEÑO DEL MODAL (Corregido) ===== */
+.cred-modal {
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center;
+  z-index: 2000;
+}
+
+.cred-modal-overlay {
+  position: absolute;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(8px);
+}
+
+.cred-modal-card {
+  position: relative;
+  background: #fff;
+  width: 90%;
+  max-width: 380px;
+  padding: 32px;
+  border-radius: 32px;
+  box-shadow: 0 25px 60px rgba(0,0,0,0.2);
+  text-align: center;
+}
+
+/* CAJA DE DATOS DENTRO DEL MODAL */
+.cred-preview-box {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 20px;
+  padding: 20px;
+  margin: 24px 0;
+  text-align: left;
+}
+
+.cred-item .cred-label { color: #94a3b8; font-size: 10px; font-weight: 800; margin-bottom: 4px; }
+.cred-item .cred-value { color: #1e293b; font-size: 15px; font-weight: 700; }
+.cred-divider { height: 1px; background: #e2e8f0; margin: 12px 0; }
+
+/* BOTONES FINALES */
+.btn-primary {
+  width: 100%;
+  padding: 16px;
+  background: #2563eb;
+  color: #fff;
+  border: none;
+  border-radius: 16px;
+  font-weight: 700;
+  font-size: 16px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.btn-primary:active { transform: scale(0.98); }
+
+.cred-actions { display: flex; gap: 12px; margin-top: 10px; }
+.btn-secondary {
+  flex: 1;
+  background: #f1f5f9;
+  color: #475569;
+  border: none;
+  border-radius: 16px;
+  padding: 16px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* TOAST (Notificación inferior) */
+.usuario-toast {
+  position: fixed;
+  bottom: 30px;
+  background: #1e293b;
+  color: #fff;
+  padding: 12px 24px;
+  border-radius: 100px;
+  font-size: 14px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  z-index: 3000;
+  transition: opacity 0.3s;
+}
+
+.hidden { display: none !important; }
+
+.error-text {
+      color: #ff4d4d;
+      font-size: 12px;
+      margin-top: 4px;
+      display: block;
+      min-height: 15px;
+      font-weight: 500;
+    }
+    input.input-error {
+      border-color: #ff4d4d !important;
+    }

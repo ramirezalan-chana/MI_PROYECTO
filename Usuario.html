@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Accede o crea tu perfil</title>
+  <link rel="stylesheet" href="Usuario.css">
+  <style>
+    .error-text {
+      color: #ff4d4d;
+      font-size: 12px;
+      margin-top: 4px;
+      display: block;
+      min-height: 15px;
+      font-weight: 500;
+    }
+    input.input-error {
+      border-color: #ff4d4d !important;
+    }
+    /* Estilo para asegurar que los formularios no rompan el diseño */
+    .usuario-pane form {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="top-promo-bar" id="topPromoBar">
+    <span>Envíos gratis - <a href="#" data-open-user>ingresa aquí</a></span>
+  </div>
+
+  <a href="Menu.html" class="usuario-back-floating">← Volver al inicio</a>
+
+  <section class="usuario-auth-page">
+    <div class="usuario-auth-shell">
+      <div class="usuario-auth-card">
+        
+        <header class="usuario-auth-head">
+          <span class="usuario-kicker">MI CUENTA</span>
+          <h1>Accede o crea tu perfil</h1>
+          <p class="usuario-auth-text">
+            Elige una opción para ingresar con tu correo o crear una cuenta nueva.
+          </p>
+          <div class="usuario-auth-note">
+            Modo simulación: datos locales.
+          </div>
+        </header>
+
+        <div class="usuario-tabs">
+          <button class="usuario-tab active" data-tab="login">Ingresar con correo</button>
+          <button class="usuario-tab" data-tab="register">Crear cuenta</button>
+        </div>
+
+        <section class="usuario-pane" id="loginPane">
+          <form id="loginForm" onsubmit="return false;">
+            <div class="usuario-field">
+              <label for="loginEmail">Correo electrónico</label>
+              <input id="loginEmail" type="email" placeholder="ejemplo@correo.com" autocomplete="username">
+              <span class="error-text" id="error-loginEmail"></span>
+            </div>
+
+            <div class="usuario-field usuario-pass-wrap">
+              <label for="loginPassword">Contraseña</label>
+              <input id="loginPassword" type="password" placeholder="Ingresa tu clave" autocomplete="current-password">
+              <button type="button" class="usuario-toggle-pass" id="toggleLoginPassword">👁</button>
+              <span class="error-text" id="error-loginPassword"></span>
+            </div>
+
+            <div class="usuario-actions">
+              <button type="submit" class="btn-primary" id="loginBtn">Ingresar</button>
+            </div>
+          </form>
+        </section>
+
+        <section class="usuario-pane hidden" id="registerPane">
+          <form id="registerForm" onsubmit="return false;">
+            <div class="usuario-field">
+              <label>Nombre completo</label>
+              <input type="text" id="regName" placeholder="Juan Pérez" autocomplete="off">
+              <span class="error-text" id="error-regName"></span>
+            </div>
+            <div class="usuario-field">
+              <label>Correo electrónico</label>
+              <input type="email" id="regEmail" placeholder="Usuario@gmail.com" autocomplete="username">
+              <span class="error-text" id="error-regEmail"></span>
+            </div>
+            <div class="usuario-field usuario-pass-wrap">
+              <label>Contraseña</label>
+              <input type="password" id="regPassword" placeholder="Mínimo 6 caracteres" autocomplete="new-password">
+              <button type="button" class="usuario-toggle-pass" id="toggleRegisterPassword">👁</button>
+              <span class="error-text" id="error-regPassword"></span>
+            </div>
+            <div class="usuario-field">
+              <label>Calle y número</label>
+              <input type="text" id="regStreet" placeholder="Av. Principal 123" autocomplete="off">
+              <span class="error-text" id="error-regStreet"></span>
+            </div>
+            <div class="usuario-split">
+              <div class="usuario-field">
+                <label>Ciudad</label>
+                <input type="text" id="regCity" placeholder="Guayaquil" autocomplete="off">
+                <span class="error-text" id="error-regCity"></span>
+              </div>
+              <div class="usuario-field">
+                <label>C.P.</label>
+                <input type="text" id="regPostalCode" placeholder="171137654" autocomplete="off">
+                <span class="error-text" id="error-regPostalCode"></span>
+              </div>
+            </div>
+            <div class="usuario-field">
+              <label>País</label>
+              <input type="text" id="regCountry" placeholder="Ecuador" autocomplete="off">
+              <span class="error-text" id="error-regCountry"></span>
+            </div>
+            <div class="usuario-actions">
+              <button type="submit" class="btn-primary" id="registerBtn">Crear cuenta</button>
+            </div>
+          </form>
+        </section>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="cred-modal hidden" id="saveCredsModal">
+    <div class="cred-modal-overlay"></div>
+    <div class="cred-modal-card">
+      <h3>¿Guardar la contraseña?</h3>
+      <p>Se guardará de forma local en este navegador.</p>
+      
+      <div class="cred-preview-box">
+        <div class="cred-item">
+          <span class="cred-label">CORREO</span>
+          <span id="displayCreatedEmail" class="cred-value"></span>
+        </div>
+        <div class="cred-divider"></div>
+        <div class="cred-item">
+          <span class="cred-label">CONTRASEÑA</span>
+          <span id="displayCreatedPass" class="cred-value">********</span>
+        </div>
+      </div>
+
+      <div class="cred-actions">
+        <button class="btn-primary" id="confirmSaveCreds">Guardar</button>
+        <button class="btn-secondary" id="cancelSaveCreds">Ahora no</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="usuario-toast hidden" id="authToast"></div>
+
+  <script src="Usuario.js"></script>
+</body>
+</html>

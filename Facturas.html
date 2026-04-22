@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>STREETKICKS - Mis Facturas</title>
+  <link rel="stylesheet" href="Diseño_menu.css" />
+  <link rel="stylesheet" href="facturas.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="navbar-inner">
+      <a href="Menu.html" class="logo">STREET<span>KICKS</span></a>
+      <div class="search-bar">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="search" name="site-search-facturas" placeholder="Busca por modelo, marca o categoría..." autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false" />
+      </div>
+      <div class="nav-icons">
+        <button class="icon-btn icon-active" aria-label="Facturas" onclick="window.location='facturas.html'">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        </button>
+        <button class="icon-btn" aria-label="Usuario">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </button>
+        <button class="icon-btn cart-btn" id="openCart" aria-label="Carrito">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="9" cy="19" r="1.6"></circle>
+            <circle cx="17" cy="19" r="1.6"></circle>
+            <path d="M3 4h2.2l1.8 9.2a1 1 0 0 0 1 .8h8.9a1 1 0 0 0 1-.7L20 7H6.3"></path>
+          </svg>
+          <span class="cart-badge" id="cartBadge">0</span>
+        </button>
+        <button class="hamburger" id="menuToggle"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+    <nav class="mobile-menu" id="mobileMenu">
+      <a href="categoria.html?cat=hombre">Hombre</a>
+      <a href="categoria.html?cat=mujer">Mujer</a>
+      <a href="categoria.html?cat=kids">Kids</a>
+      <a href="categoria.html?cat=running">Running</a>
+    </nav>
+  </header>
+
+  <main class="facturas-wrapper">
+
+    <a href="Menu.html" class="back-link">← Inicio</a>
+
+    <!-- ENCABEZADO -->
+    <div class="facturas-header">
+      <div>
+        <h1 class="facturas-title">Mis facturas</h1>
+        <p class="facturas-sub">Consulta y descarga las facturas de todos tus pagos.</p>
+      </div>
+      <div class="facturas-search-box">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="search" id="searchFacturas" name="invoice-search" placeholder="Buscar por N°, nombre o correo" oninput="filtrarFacturas()" autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false" />
+      </div>
+    </div>
+
+    <!-- FILTROS POR ESTADO -->
+    <div class="facturas-filtros">
+      <button class="filtro-estado active" onclick="setEstado('todos', this)">Todos</button>
+      <button class="filtro-estado" onclick="setEstado('procesando', this)">Procesando</button>
+      <button class="filtro-estado" onclick="setEstado('completado', this)">Completado</button>
+      <button class="filtro-estado" onclick="setEstado('cancelado', this)">Cancelado</button>
+    </div>
+
+    <!-- LISTA -->
+    <div id="facturasList"></div>
+
+    <!-- VACÍO -->
+    <div class="facturas-empty hidden" id="facturasEmpty">
+      <div class="f-empty-icon">🧾</div>
+      <h3>No se encontraron facturas</h3>
+      <p>Intenta con otro término de búsqueda.</p>
+    </div>
+
+  </main>
+
+  <!-- MODAL VER PEDIDO -->
+  <div class="overlay" id="pedidoOverlay" onclick="closePedidoEvent(event)">
+    <div class="pedido-modal">
+      <button class="modal-close" onclick="closePedido()">✕</button>
+      <div id="pedidoContent"></div>
+    </div>
+  </div>
+
+  <script src="UserAuth.js"></script>
+  <script src="carrito-state.js"></script>
+  <script src="carrito-mini.js"></script>
+  <script src="facturas.js"></script>
+  <script>
+    document.getElementById('menuToggle').addEventListener('click', () => {
+      document.getElementById('mobileMenu').classList.toggle('open');
+      document.getElementById('menuToggle').classList.toggle('active');
+    });
+  </script>
+</body>
+</html>

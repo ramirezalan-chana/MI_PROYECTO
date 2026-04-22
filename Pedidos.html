@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StreetKicks · Mis Pedidos</title>
+  <link rel="stylesheet" href="Pedidos.css">
+</head>
+<body>
+
+<!-- ── Header ──────────────────────────────────────────── -->
+<header>
+  <span class="logo">STREET<span>KICKS</span></span>
+  <div class="nav-icons">
+
+    <!-- Caja / pedidos -->
+    <svg class="nav-icon" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+      <path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/>
+      <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+      <line x1="12" y1="22.08" x2="12" y2="12"/>
+    </svg>
+
+    <!-- Recibo -->
+    <svg class="nav-icon" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+      <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+      <polyline points="14 2 14 8 20 8"/>
+      <line x1="16" y1="13" x2="8" y2="13"/>
+      <line x1="16" y1="17" x2="8" y2="17"/>
+    </svg>
+
+    <!-- Usuario -->
+    <svg class="nav-icon" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+      <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/>
+      <circle cx="12" cy="7" r="4"/>
+    </svg>
+
+    <!-- Carrito -->
+    <svg class="nav-icon" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+      <circle cx="9" cy="21" r="1"/>
+      <circle cx="20" cy="21" r="1"/>
+      <path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/>
+    </svg>
+
+    <!-- Menú -->
+    <svg class="nav-icon" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+      <line x1="3" y1="6"  x2="21" y2="6"/>
+      <line x1="3" y1="12" x2="21" y2="12"/>
+      <line x1="3" y1="18" x2="21" y2="18"/>
+    </svg>
+
+  </div>
+</header>
+
+<!-- ── Buscador ─────────────────────────────────────────── -->
+<div class="search-wrap">
+  <div class="search-box">
+    <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <circle cx="11" cy="11" r="8"/>
+      <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+    </svg>
+    <input type="text" placeholder="Busca por modelo, marca o categoría...">
+  </div>
+</div>
+
+<!-- ── Título de página ──────────────────────────────────── -->
+<div class="page-header">
+  <div class="breadcrumb">
+    <a href="Menu.html">← Inicio</a>
+  </div>
+  <div class="page-title">Mis Pedidos</div>
+</div>
+
+<!-- ── Pestañas de filtro ───────────────────────────────── -->
+<div class="filter-tabs">
+  <div class="tab active"  onclick="filterOrders('all', this)">Todos</div>
+  <div class="tab"         onclick="filterOrders('transit', this)">En tránsito</div>
+  <div class="tab"         onclick="filterOrders('processing', this)">Procesando</div>
+  <div class="tab"         onclick="filterOrders('ready', this)">Listo para retirar</div>
+  <div class="tab"         onclick="filterOrders('delivered', this)">Entregados</div>
+</div>
+
+<!-- ── Lista dinámica (llenada por Pedidos.js) ──────────── -->
+<div class="orders-list" id="ordersList"></div>
+
+<div class="pb-safe"></div>
+
+<!-- ── Navegación inferior ──────────────────────────────── -->
+<nav class="bottom-nav">
+
+  <div class="bn-item" onclick="window.location.href='Menu.html'">
+    <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+      <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
+      <polyline points="9 22 9 12 15 12 15 22"/>
+    </svg>
+    Inicio
+  </div>
+
+  <div class="bn-item" onclick="window.location.href='categoria.html'">
+    <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+      <circle cx="11" cy="11" r="8"/>
+      <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+    </svg>
+    Buscar
+  </div>
+
+  <div class="bn-item active">
+    <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+      <path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/>
+      <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+      <line x1="12" y1="22.08" x2="12" y2="12"/>
+    </svg>
+    Pedidos
+  </div>
+
+  <div class="bn-item" onclick="window.location.href='Carrito.html'">
+    <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+      <circle cx="9" cy="21" r="1"/>
+      <circle cx="20" cy="21" r="1"/>
+      <path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/>
+    </svg>
+    Carrito
+  </div>
+
+  <div class="bn-item" onclick="window.location.href='Usuario.html'">
+    <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+      <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/>
+      <circle cx="12" cy="7" r="4"/>
+    </svg>
+    Perfil
+  </div>
+
+</nav>
+
+<!-- ── Script ───────────────────────────────────────────── -->
+<script src="Pedidos.js"></script>
+</body>
+</html>
